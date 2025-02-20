@@ -13,7 +13,8 @@ jobs:
       - uses: actions/checkout@v4
       - name: Build Docker image
         run: ./build_push_image_forum_api.sh
-        env: CR_PAT ${{ secrets.CR_PAT }}
+        env:
+          CR_PAT: ${{ secrets.CR_PAT }}
 
       #       POSTGRES_USER: ${PGUSER}
       #      POSTGRES_PASSWORD: ${PGPASSWORD}
