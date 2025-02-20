@@ -39,7 +39,7 @@ jobs:
           key: ${{ secrets.SSH_KEY }}
           port: ${{ secrets.PORT }}
           source: "docker-compose.yaml,.env"
-          target: "~"
+          target: "~/"
 
       - name: SSH and deploy app
         uses: appleboy/ssh-action@master
