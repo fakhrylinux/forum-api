@@ -26,6 +26,9 @@ jobs:
           PGDATABASE=${{ secrets.PGDATABASE }}
           PGPASSWORD=${{ secrets.PGPASSWORD }}
           PGPORT=${{ secrets.PGPORT }}
+          POSTGRES_USER=${{ secrets.PGUSER }}
+          POSTGRES_PASSWORD=${{ secrets.PGPASSWORD }}
+          POSTGRES_DB=${{ secrets.PGDATABASE }}
           ACCESS_TOKEN_KEY=${{ secrets.ACCESS_TOKEN_KEY }}
           REFRESH_TOKEN_KEY=${{ secrets.REFRESH_TOKEN_KEY }}
           ACCESS_TOKEN_AGE=${{ secrets.ACCESS_TOKEN_AGE }}
