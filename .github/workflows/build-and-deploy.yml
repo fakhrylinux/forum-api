@@ -16,9 +16,6 @@ jobs:
         env:
           CR_PAT: ${{ secrets.CR_PAT }}
 
-      #       POSTGRES_USER: ${PGUSER}
-      #      POSTGRES_PASSWORD: ${PGPASSWORD}
-      #      POSTGRES_DB: ${PGDATABASE}
       - name: Create .env file
         run: |
           cat <<EOF > .env
@@ -38,8 +35,7 @@ jobs:
         uses: appleboy/scp-action@v0.1.7
         with:
           host: ${{ secrets.HOST }}
-          username: ${{ secrets.USERNAME }}
-          password: ${{ secrets.PASSWORD }}
+          username: ${{ secrets.SSH_USERNAME }}
           port: ${{ secrets.PORT }}
           source: "docker-compose.yaml,.env"
           target: "~"
