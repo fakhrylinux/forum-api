@@ -1,0 +1,29 @@
+services:
+  forum-api-db:
+    image: postgres:14.16
+    ports:
+      - "5432:5432"
+    restart: always
+    volumes:
+      - forum-api-db:/var/lib/postgresql/data
+    environment:
+      POSTGRES_USER: developer
+      POSTGRES_PASSWORD: secretpassword
+      POSTGRES_DB: forum_api
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 1s
+      timeout: 5s
+      retries: 10
+
+  forum-api:
+    image: ghcr.io/fakhrylinux/forum-api-hapi-js:1.0.0
+    ports:
+      - 5000:5000
+    depends_on:
+      forum-api-db:
+        condition: service_healthy
+    restart: on-failure
+
+volumes:
+  forum-api-db:
